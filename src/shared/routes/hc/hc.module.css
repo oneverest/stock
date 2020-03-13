@@ -1,0 +1,22 @@
+.miniSidebar {
+  overflow-y: unset !important;
+}
+
+#kbHeaderAddon {
+  background-color: grey !important;
+  height: 20vh;
+
+  & input {
+    border-radius: 30px;
+  }
+}
+
+.loginDropDown {
+  border: 1px solid rgb(209, 209, 209) !important;
+  margin: 0 !important;
+  padding: 5px 13px !important;
+}
+
+.loginDropDownDivider {
+  margin: 0 10px !important;
+}

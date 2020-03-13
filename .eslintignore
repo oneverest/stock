@@ -1,0 +1,12 @@
+**/node_modules
+**/public
+src/frontend/config/env.js
+**/build
+*.d.ts
+babel.config.js
+postcss.config.ts
+postcss.config.js
+/scripts/db/*.ts
+/src/server/infra/sequelize/**/*.js
+sequelizerc.ts
+transpile-migrations.js

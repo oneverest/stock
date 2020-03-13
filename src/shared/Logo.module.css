@@ -1,0 +1,6 @@
+.logoWrapper {
+  border: 3px solid green;
+  max-width: 300px;
+  height: auto;
+  display: block;
+}

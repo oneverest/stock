@@ -1,0 +1,64 @@
+#main_wrapper {
+  background-color: rgb(241, 244, 245);
+}
+
+.agent-logo {
+  background-color: white !important;
+  margin-bottom: 0 !important;
+}
+
+.topmenu {
+  margin-bottom: 0 !important;
+}
+
+.topmenu + .segment {
+  margin-top: 0 !important;
+}
+
+#topmenu > .item {
+  height: auto !important;
+}
+
+#main_sidebar .accordion .title > :last-child {
+  left: 153px;
+  position: absolute;
+}
+
+.ui.very.thin.sidebar {
+  overflow-y: unset !important;
+}
+
+#main_sidebar .accordion .title > :first-child {
+  margin: 0;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+#main_sidebar .ui.dropdown.item {
+  margin-bottom: 0;
+  padding-bottom: 32px;
+  padding-right: 20px;
+  padding-top: 18px;
+}
+
+#main_sidebar .accordion {
+  margin: 0;
+  padding-top: 16px;
+  position: relative;
+}
+
+#main_sidebar .accordion .content {
+  text-align: center;
+}
+
+#agent_page_content {
+  background: #f1f4f5;
+}
+
+.displaynone {
+  display: none !important;
+}
+
+.displayblock {
+  display: block;
+}

@@ -1,0 +1,17 @@
+//- template.pug
+extends layout.pug
+
+//- block scripts
+  //- script(src='/jquery.js')
+  //- script(src='/pets.js')
+
+block content
+  h1= self.title
+  p #{self.name}'s Pug source code!
+  div
+    img(src=require("./xuan.png").default)
+  - var pets = ['cat', 'dog']
+  each petName in pets
+    include pet.pug
+
+  //- include pet.pug

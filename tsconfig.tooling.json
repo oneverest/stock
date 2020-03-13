@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "esModuleInterop": true
+  },
+  "exclude": ["src"],
+  "include": ["config", "scripts"],
+}
