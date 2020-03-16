@@ -45,7 +45,7 @@ export class CreateUserUseCase implements UseCase<CreateUserDTO, Response> {
     }
 
     try {
-      this.repo.save(user);
+      await this.repo.save(user);
     } catch (error) {
       return left(GenericAppError.UnexpectedError.create(error)) as Response;
     }

@@ -20,6 +20,7 @@ import { useSelector } from 'react-redux';
 import './main.css';
 import { Link } from 'react-router-dom';
 import SimpleChart from 'components/SimpleChart';
+import PovChart from 'components/PovChart';
 
 const getSidebarWidth = (isDefault: boolean): number => {
   return isDefault ? 190 : 60;
@@ -97,6 +98,11 @@ const Agent = (props: any) => {
             <Accordion.Content active={activeIndex === 0}>
               <Link to="/agent" className="item">
                 dashboard v1
+              </Link>
+            </Accordion.Content>
+            <Accordion.Content active={activeIndex === 0}>
+              <Link to="/agent/pov_stat" className="item">
+                pov
               </Link>
             </Accordion.Content>
           </Accordion>
@@ -208,7 +214,8 @@ const Agent = (props: any) => {
               <Segment id="agent_page_content">
                 <Segment>123</Segment>
                 <Segment>
-                  <SimpleChart width={400} height={400} />
+                  {/* <SimpleChart width={400} height={400} /> */}
+                  <PovChart />
                 </Segment>
                 <Segment>
                   <p>

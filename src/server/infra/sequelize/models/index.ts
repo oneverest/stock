@@ -4,8 +4,9 @@ import path from 'path';
 import paths from '../../../../../config/paths';
 // We need import every model here
 import './baseUser';
+import './pov';
 // And we must put every model filename in this array
-const modelsPath = ['baseUser.ts'];
+const modelsPath = ['baseUser.ts', 'pov.ts'];
 
 const models: any = {};
 let loaded = false;
