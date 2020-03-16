@@ -91,9 +91,9 @@ const Agent = (props: any) => {
             <Image src={logo} hidden={useMiniLeftSideBar} />
             <Image src={logoMini} hidden={!useMiniLeftSideBar} />
           </Link>
-          <Accordion as={'a'} className={(useMiniLeftSideBar ? ' displaynone ' : '') + ' item inverted'}>
-            <Accordion.Title active={activeIndex === 0} index={0} onClick={handldeClick}>
-              <Icon name="dashboard" /> Dashboard <Icon name="dropdown" />
+          <Accordion className={(useMiniLeftSideBar ? ' displaynone ' : '') + ' inverted'}>
+            <Accordion.Title as={'a'} active={activeIndex === 0} index={0} onClick={handldeClick} className="item">
+              <Icon className="titleIcon" name="dashboard" /> Dashboard <Icon name="dropdown" />
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 0}>
               <Link to="/agent" className="item">
@@ -107,9 +107,9 @@ const Agent = (props: any) => {
             </Accordion.Content>
           </Accordion>
 
-          <Accordion as={'a'} className={(useMiniLeftSideBar ? ' displaynone ' : '') + ' item inverted'}>
-            <Accordion.Title active={activeIndex === 1} index={1} onClick={handldeClick}>
-              <Icon name="app store" /> Apps <Icon name="dropdown" />
+          <Accordion className={(useMiniLeftSideBar ? ' displaynone ' : '') + ' inverted'}>
+            <Accordion.Title as={'a'} active={activeIndex === 1} index={1} onClick={handldeClick} className="item">
+              <Icon className="titleIcon" name="app store" /> Apps <Icon name="dropdown" />
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 1}>
               <Link to="/agent" className="item">
@@ -216,168 +216,6 @@ const Agent = (props: any) => {
                 <Segment>
                   {/* <SimpleChart width={400} height={400} /> */}
                   <PovChart />
-                </Segment>
-                <Segment>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, cumque. Delectus aliquam dolores
-                    numquam consectetur autem vel quas maiores modi cupiditate architecto consequuntur ea omnis officia
-                    obcaecati, doloribus nesciunt ut?
-                  </p>
                 </Segment>
               </Segment>
             </Sidebar.Pusher>

@@ -15,6 +15,10 @@
   margin-top: 0 !important;
 }
 
+#main_sidebar .accordion .titleIcon {
+  float: left !important;
+}
+
 #topmenu > .item {
   height: auto !important;
 }
@@ -34,6 +38,14 @@
   margin-right: 16px;
 }
 
+#main_sidebar .accordion .title {
+  margin: 0;
+  padding-bottom: 10px !important;
+  padding-top: 10px !important;
+  vertical-align: middle !important;
+  width: 100% !important;
+}
+
 #main_sidebar .ui.dropdown.item {
   margin-bottom: 0;
   padding-bottom: 32px;
@@ -43,13 +55,24 @@
 
 #main_sidebar .accordion {
   margin: 0;
-  padding-top: 16px;
-  position: relative;
+  padding: 0;
+  /* padding-top: 16px; */
+  /* position: relative; */
+  /* height: 50px; */
+  /* width: auto; */
 }
 
 #main_sidebar .accordion .content {
-  text-align: center;
+  margin: 0;
+  margin-left: 30px !important;
+  /* text-align: center; */
+  /* border: 1px solid red !important; */
+  padding: 0;
 }
+
+/* #main_sidebar .accordion .content .item {
+  border: 1px solid white !important
+} */
 
 #agent_page_content {
   background: #f1f4f5;
