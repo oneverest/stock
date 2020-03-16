@@ -18,10 +18,11 @@ import xuan from './xuan.png';
 import logoMini from './logo.mini.png';
 import { useSelector } from 'react-redux';
 import './main.css';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import SimpleChart from 'components/SimpleChart';
 import PovChart from 'components/PovChart';
-import { IndexRoute } from './routes/index';
+import { ListRoute } from './routes/pov/list/';
+import { StatRoute } from './routes/pov/stat';
 
 const getSidebarWidth = (isDefault: boolean): number => {
   return isDefault ? 190 : 60;
@@ -124,13 +125,13 @@ const Agent = (props: any) => {
               <Icon className="titleIcon" name="app store" /> 资产管理 <Icon name="dropdown" />
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 2}>
-              <Link to="/agent" className="item">
-                列表
+              <Link to="/agent/pov/list" className="item">
+                净值表
               </Link>
             </Accordion.Content>
             <Accordion.Content active={activeIndex === 2}>
-              <Link to="/agent" className="item">
-                统计
+              <Link to="/agent/pov/stat" className="item">
+                数据统计
               </Link>
             </Accordion.Content>
           </Accordion>
@@ -232,7 +233,9 @@ const Agent = (props: any) => {
                 <Segment>
                   {/* <SimpleChart width={400} height={400} /> */}
                   {/* <PovChart /> */}
-                  <IndexRoute />
+                  {/* <IndexRoute /> */}
+                  <Route path="/agent/pov/list" component={ListRoute} exact />
+                  <Route path="/agent/pov/stat" component={StatRoute} exact />
                 </Segment>
               </Segment>
             </Sidebar.Pusher>
