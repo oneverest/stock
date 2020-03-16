@@ -21,6 +21,7 @@ import './main.css';
 import { Link } from 'react-router-dom';
 import SimpleChart from 'components/SimpleChart';
 import PovChart from 'components/PovChart';
+import { IndexRoute } from './routes/index';
 
 const getSidebarWidth = (isDefault: boolean): number => {
   return isDefault ? 190 : 60;
@@ -114,6 +115,22 @@ const Agent = (props: any) => {
             <Accordion.Content active={activeIndex === 1}>
               <Link to="/agent" className="item">
                 dashboard v1
+              </Link>
+            </Accordion.Content>
+          </Accordion>
+
+          <Accordion className={(useMiniLeftSideBar ? ' displaynone ' : '') + ' inverted'}>
+            <Accordion.Title as={'a'} active={activeIndex === 2} index={2} onClick={handldeClick} className="item">
+              <Icon className="titleIcon" name="app store" /> 资产管理 <Icon name="dropdown" />
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 2}>
+              <Link to="/agent" className="item">
+                列表
+              </Link>
+            </Accordion.Content>
+            <Accordion.Content active={activeIndex === 2}>
+              <Link to="/agent" className="item">
+                统计
               </Link>
             </Accordion.Content>
           </Accordion>
@@ -212,10 +229,10 @@ const Agent = (props: any) => {
                 </Menu.Menu>
               </Menu>
               <Segment id="agent_page_content">
-                <Segment>123</Segment>
                 <Segment>
                   {/* <SimpleChart width={400} height={400} /> */}
-                  <PovChart />
+                  {/* <PovChart /> */}
+                  <IndexRoute />
                 </Segment>
               </Segment>
             </Sidebar.Pusher>
