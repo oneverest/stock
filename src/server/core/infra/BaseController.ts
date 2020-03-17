@@ -1,30 +1,16 @@
 import * as express from 'express';
-import { getNamespace } from 'cls-hooked';
-import { clsName } from '../../config';
-
-const key = 'HttpResponseResource';
 
 export abstract class BaseController {
   protected req!: express.Request; // not null assertion
+  protected res!: express.Response;
 
   protected abstract executeImpl(): Promise<void | any>;
 
   public execute(req: express.Request, res: express.Response): void {
-    const ns = getNamespace(clsName);
-    ns.set(key, res);
-
     this.req = req;
+    this.res = res;
 
     this.executeImpl();
-  }
-
-  public get res(): express.Response {
-    const ns = getNamespace(clsName);
-    const res = ns.get(key);
-    if (res === undefined) {
-      throw new Error(`[ClsError]: context http res resource is invalid`);
-    }
-    return res;
   }
 
   public static jsonResponse(res: express.Response, code: number, message: string) {
