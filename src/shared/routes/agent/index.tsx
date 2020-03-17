@@ -23,6 +23,7 @@ import SimpleChart from 'components/SimpleChart';
 import PovChart from 'components/PovChart';
 import { ListRoute } from './routes/pov/list/';
 import { StatRoute } from './routes/pov/stat';
+import { PovAdd } from './routes/pov/PovAdd';
 
 const getSidebarWidth = (isDefault: boolean): number => {
   return isDefault ? 190 : 60;
@@ -236,6 +237,7 @@ const Agent = (props: any) => {
                   {/* <IndexRoute /> */}
                   <Route path="/agent/pov/list" component={ListRoute} exact />
                   <Route path="/agent/pov/stat" component={StatRoute} exact />
+                  <Route path="/agent/pov/add" component={PovAdd} exact />
                 </Segment>
               </Segment>
             </Sidebar.Pusher>

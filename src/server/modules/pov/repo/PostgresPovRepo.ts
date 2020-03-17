@@ -62,6 +62,34 @@ export class PostgresPovRepo implements IPovRepo {
     return Result.ok(results);
   }
 
+  async findAll(options: any): Promise<Result<any[]>> {
+    const sequelize: Sequelize = this.models.sequelize;
+
+    // let condition = '';
+    let limit = 20;
+    let offset = 0;
+    if (options.offset) offset = Number(options.offset);
+    if (options.limit) limit = Number(options.limit);
+
+    // if (options.start || options.end) {
+    //   let condition = 'where';
+    //   if (options.start) {
+    //     condition += ` record_date >= '${String(options.start)}'`;
+    //   }
+    // }
+
+    try {
+      const [results] = await sequelize.query(`select * from pov order by record_date desc limit $1 offset $2`, {
+        bind: [limit, offset],
+      });
+      // console.log(meta, results);
+
+      return Result.ok(results);
+    } catch (error) {
+      return Result.fail(error);
+    }
+  }
+
   async getRecordByDate(date: PovDate): Promise<Result<Pov | null>> {
     const baseQuery = this.createBaseQuery();
     baseQuery.where['record_date'] = date.value;

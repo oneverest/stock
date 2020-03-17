@@ -101,7 +101,8 @@ app.use((req, res, next) => {
 //   res.send(fn(locals));
 // });
 const sessionChecker = (req: express.Request, res: express.Response, next: NextFunction) => {
-  if (req.url === '/user/login') {
+  // if (req.url === '/user/login') {
+  if (req.url === '/user/login' || req.url.startsWith('/pov')) {
     return next();
   }
   if (req.session && req.session.user) {
