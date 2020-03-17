@@ -9,5 +9,5 @@ export interface IPovRepo {
   searchInRange(from: string, to: string): Promise<Result<any[]>>;
   getRecordByDate(date: PovDate): Promise<Result<Pov | null>>;
   getRecordById(id: UniqueEntityID): Promise<Result<Pov | null>>;
-  findAll(options: any): Promise<Result<any[]>>;
+  findAll(options: any): Promise<Result<any>>;
 }

@@ -62,7 +62,7 @@ export class PostgresPovRepo implements IPovRepo {
     return Result.ok(results);
   }
 
-  async findAll(options: any): Promise<Result<any[]>> {
+  async findAll(options: any): Promise<Result<any>> {
     const sequelize: Sequelize = this.models.sequelize;
 
     // let condition = '';
@@ -79,12 +79,23 @@ export class PostgresPovRepo implements IPovRepo {
     // }
 
     try {
-      const [results] = await sequelize.query(`select * from pov order by record_date desc limit $1 offset $2`, {
+      const [count] = await sequelize.query(`select count(*) from pov limit $1 offset $2`, {
+        bind: [limit, offset],
+        raw: true,
+      });
+      const [results, meta] = await sequelize.query(`select * from pov order by record_date desc limit $1 offset $2`, {
         bind: [limit, offset],
       });
-      // console.log(meta, results);
+      console.log(count);
 
-      return Result.ok(results);
+      return Result.ok({
+        data: results,
+        meta: {
+          ...(count[0] as any),
+          limit,
+          offset,
+        },
+      });
     } catch (error) {
       return Result.fail(error);
     }
