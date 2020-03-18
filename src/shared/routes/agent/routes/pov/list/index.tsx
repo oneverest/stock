@@ -45,7 +45,7 @@ export function ListRoute() {
                     <Table.Row>
                       <Table.HeaderCell colSpan="6">
                         <Pagination defaultActivePage={1} totalPages={5} />
-                        <Button primary size="small" floated="right">
+                        <Button as={Link} to="/agent/pov/add" primary size="small" floated="right">
                           创建记录
                         </Button>
                       </Table.HeaderCell>

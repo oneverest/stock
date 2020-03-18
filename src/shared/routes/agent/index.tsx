@@ -19,11 +19,10 @@ import logoMini from './logo.mini.png';
 import { useSelector } from 'react-redux';
 import './main.css';
 import { Link, Route } from 'react-router-dom';
-import SimpleChart from 'components/SimpleChart';
-import PovChart from 'components/PovChart';
 import { ListRoute } from './routes/pov/list/';
 import { StatRoute } from './routes/pov/stat';
 import { PovAdd } from './routes/pov/PovAdd';
+import { Notification } from './Notification';
 
 const getSidebarWidth = (isDefault: boolean): number => {
   return isDefault ? 190 : 60;
@@ -251,6 +250,7 @@ const Agent = (props: any) => {
             <Segment placeholder />
           </Sidebar>
         </Sidebar.Pushable>
+        <Notification />
       </div>
     </React.Fragment>
   );
