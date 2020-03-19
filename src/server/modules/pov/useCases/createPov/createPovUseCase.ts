@@ -38,7 +38,7 @@ export class CreatePovUseCase implements UseCase<CreatePovDTO, Response> {
     if (resultOrError.isFailure) {
       return left(resultOrError) as Response;
     }
-    if (!resultOrError.getValue()) {
+    if (resultOrError.getValue()) {
       return left(new RecordAlreadyExists(record.record_date.value)) as Response;
     }
 

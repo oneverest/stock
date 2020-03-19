@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Grid, SegmentGroup, Segment, Header, Table, Button, Icon, Pagination, Container } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import { getAllPovs } from 'services/pov';
 import { connect } from 'react-redux';
+import { getAllPovsAction } from 'store/agent/actions';
 
-function ListRoute() {
-  const [items, setItems] = useState<any[]>([]);
+function ListRoute(props: any) {
+  console.log('listRoute:', props);
 
-  // useEffect(async () => {
-  //   const result = await getAllPovs({ page: 1, pageSize: 20 });
-  // });
+  useEffect(() => {
+    props.dispatch(getAllPovsAction({ page: 1 }));
+  });
   return (
     <React.Fragment>
       <Grid className="list1" columns="equal" stackable padded textAlign="left">
@@ -22,7 +22,7 @@ function ListRoute() {
                   创建记录
                 </Button>
               </Segment>
-              {items.length ? (
+              {props.info.data.length ? (
                 <Segment>
                   <Table striped celled compact textAlign="center">
                     <Table.Header fullWidth>
@@ -36,21 +36,23 @@ function ListRoute() {
                       </Table.Row>
                     </Table.Header>
                     <Table.Body>
-                      <Table.Row>
-                        <Table.Cell>12</Table.Cell>
-                        <Table.Cell>2019-03-22</Table.Cell>
-                        <Table.Cell>1.0</Table.Cell>
-                        <Table.Cell>0.7</Table.Cell>
-                        <Table.Cell>2000.12</Table.Cell>
-                        <Table.Cell>
-                          <Link to="/agent/pov/123" title="编辑">
-                            <Icon color="blue" name="edit" />
-                          </Link>
-                          <Link to="/" onClick={() => console.log(123)} data-id={123} title="删除">
-                            <Icon color="red" name="trash alternate" />
-                          </Link>
-                        </Table.Cell>
-                      </Table.Row>
+                      {props.info.data.map((item: any, index: any) => (
+                        <Table.Row key={index}>
+                          <Table.Cell>{item.base_id}</Table.Cell>
+                          <Table.Cell>{item.record_date}</Table.Cell>
+                          <Table.Cell>{item.net_worth}</Table.Cell>
+                          <Table.Cell>{item.position_ratio}</Table.Cell>
+                          <Table.Cell>{item.szzs}</Table.Cell>
+                          <Table.Cell>
+                            <Link to={`/agent/pov/${item.base_id}`} title="编辑">
+                              <Icon color="blue" name="edit" />
+                            </Link>
+                            <Link to="/" onClick={() => console.log(123)} data-id={123} title="删除">
+                              <Icon color="red" name="trash alternate" />
+                            </Link>
+                          </Table.Cell>
+                        </Table.Row>
+                      ))}
                     </Table.Body>
                     <Table.Footer fullWidth>
                       <Table.Row>
@@ -79,7 +81,7 @@ function ListRoute() {
 const mapStateToProps = (state: any, ownProps: any) => {
   return {
     ...ownProps,
-    page: state.page,
+    info: state.agent.pov_list,
   };
 };
 

@@ -3,7 +3,7 @@ import { ActionTypes } from './actions';
 
 export const initialState = Object.freeze({
   error: {
-    level: 'info',
+    level: 'success',
     message: '',
     visible: false,
   },
@@ -11,6 +11,7 @@ export const initialState = Object.freeze({
     data: [],
     page: 1,
     pageSize: 20,
+    total: 0,
     start: null,
     end: null,
   },
@@ -25,8 +26,11 @@ export default (state = initialState, action: any) =>
         draft.error.visible = true;
         break;
       case ActionTypes.HIDE_NOTIFICATION:
-        draft.error.level = 'info';
-        draft.error.message = '';
         draft.error.visible = false;
+        break;
+      case ActionTypes.FETCH_POV_LIST:
+        draft.pov_list.data = action.data;
+        draft.pov_list.total = Number(action.meta.count);
+        break;
     }
   });

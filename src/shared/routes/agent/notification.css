@@ -1,6 +1,6 @@
 #notification-wrapper {
-  bottom: 50px;
+  bottom: 25px;
   position: fixed;
-  right: 50px;
+  right: 25px;
   z-index: 5000;
 }

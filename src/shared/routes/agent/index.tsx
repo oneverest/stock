@@ -21,8 +21,8 @@ import './main.css';
 import { Link, Route } from 'react-router-dom';
 import ListRoute from './routes/pov/list/';
 import { StatRoute } from './routes/pov/stat';
-import { PovAdd } from './routes/pov/PovAdd';
-import { Notification } from './Notification';
+import PovAdd from './routes/pov/PovAdd';
+import Notification from './Notification';
 
 const getSidebarWidth = (isDefault: boolean): number => {
   return isDefault ? 190 : 60;

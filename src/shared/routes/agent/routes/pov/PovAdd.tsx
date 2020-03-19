@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Segment, Form, Header, Input, Divider, Button } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { addPovRecord } from 'store/agent/actions';
 
-export function PovAdd(props: any) {
+function PovAdd(props: any) {
   const [net_worth, setNetWorth] = useState(0);
   const [position_ratio, setPositionRatio] = useState(0);
   const [szzs, setSzzs] = useState(0);
@@ -15,7 +17,20 @@ export function PovAdd(props: any) {
 
   const handleSubmit = (e: any, target: any) => {
     console.log(net_worth, position_ratio, szzs, record_date);
+
+    props.dispatch(
+      addPovRecord({
+        net_worth,
+        position_ratio,
+        szzs,
+        record_date,
+      }),
+    );
   };
+
+  // useEffect(() => {
+  //   console.log(net_worth, position_ratio, szzs, record_date);
+  // });
   return (
     <React.Fragment>
       <Segment>
@@ -46,3 +61,8 @@ export function PovAdd(props: any) {
     </React.Fragment>
   );
 }
+
+const mapStateToProps = (state: any, ownProps: any) => {
+  return { ...ownProps };
+};
+export default connect(mapStateToProps)(PovAdd);
