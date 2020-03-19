@@ -22,5 +22,6 @@
       "*": ["shared/*", "client/*", "server/*", "*"]
     },
     "types": ["./node_modules/semantic-ui-react", "./node_modules/@types/webpack-env", "jest", "node", "./node_modules/@types/moment-timezone"]
-  }
+  },
+  "include": ["./src/**/*"]
 }

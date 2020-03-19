@@ -19,7 +19,7 @@ import logoMini from './logo.mini.png';
 import { useSelector } from 'react-redux';
 import './main.css';
 import { Link, Route } from 'react-router-dom';
-import { ListRoute } from './routes/pov/list/';
+import ListRoute from './routes/pov/list/';
 import { StatRoute } from './routes/pov/stat';
 import { PovAdd } from './routes/pov/PovAdd';
 import { Notification } from './Notification';

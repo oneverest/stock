@@ -83,10 +83,9 @@ export class PostgresPovRepo implements IPovRepo {
         bind: [limit, offset],
         raw: true,
       });
-      const [results, meta] = await sequelize.query(`select * from pov order by record_date desc limit $1 offset $2`, {
+      const [results] = await sequelize.query(`select * from pov order by record_date desc limit $1 offset $2`, {
         bind: [limit, offset],
       });
-      console.log(count);
 
       return Result.ok({
         data: results,
