@@ -20,7 +20,7 @@ function App() {
         <Switch>
           <Route path="/agent" component={AgentConsole} />
           <Route path="/hc" component={HelpCenter} />
-          <Redirect to="/hc" />
+          <Redirect to="/agent" />
         </Switch>
       </MyRouter>
     </React.Fragment>

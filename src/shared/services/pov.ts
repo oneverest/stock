@@ -30,6 +30,20 @@ export const update = async (id: string, options: any) => {
   }
 };
 
+export const deletePov = async (id: string) => {
+  try {
+    const result = await http.delete<{ message: string }>(`http://localhost:3800/api/v1/pov/${id}`);
+
+    if (result.status == 200) {
+      return Result.ok<void>();
+    }
+
+    return Result.fail(result.data.message);
+  } catch (error) {
+    return Result.fail(error);
+  }
+};
+
 export const getAllPovs = async (options: { start?: string; end?: string; page: number; pageSize?: number }) => {
   const { start, end, page, pageSize } = options;
 

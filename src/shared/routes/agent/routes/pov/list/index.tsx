@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react';
-import { Grid, SegmentGroup, Segment, Header, Table, Button, Icon, Pagination, Container } from 'semantic-ui-react';
+import React, { useEffect, useState } from 'react';
+import { Grid, SegmentGroup, Segment, Header, Table, Button, Icon, Container } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getAllPovsAction } from 'store/agent/actions';
+import { getAllPovsAction, deletePovRecord } from 'store/agent/actions';
+import { Pager } from 'components/Pager';
+
+// const initialState = {page: 1, total: 0, pageSize: 20};
 
 function ListRoute(props: any) {
-  console.log('listRoute:', props);
-
+  // const [page, setPage] = useState(1);
   useEffect(() => {
+    // console.log(props);
     props.dispatch(getAllPovsAction({ page: 1 }));
   });
   return (
@@ -47,7 +50,12 @@ function ListRoute(props: any) {
                             <Link to={`/agent/pov/${item.base_id}`} title="编辑">
                               <Icon color="blue" name="edit" />
                             </Link>
-                            <Link to="/" onClick={() => console.log(123)} data-id={123} title="删除">
+                            <Link
+                              to="/"
+                              onClick={() => props.dispatch(deletePovRecord(item.base_id))}
+                              data-id={item.base_id}
+                              title="删除"
+                            >
                               <Icon color="red" name="trash alternate" />
                             </Link>
                           </Table.Cell>
@@ -57,7 +65,7 @@ function ListRoute(props: any) {
                     <Table.Footer fullWidth>
                       <Table.Row>
                         <Table.HeaderCell colSpan="6">
-                          <Pagination defaultActivePage={1} totalPages={5} />
+                          <Pager defaultActivePage={1} totalPages={5} />
                         </Table.HeaderCell>
                       </Table.Row>
                     </Table.Footer>

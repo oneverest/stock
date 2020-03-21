@@ -79,13 +79,19 @@ export class PostgresPovRepo implements IPovRepo {
     // }
 
     try {
-      const [count] = await sequelize.query(`select count(*) from pov limit $1 offset $2`, {
+      const [count] = await sequelize.query(`select count(*) from pov where deleted_at is null limit $1 offset $2`, {
         bind: [limit, offset],
         raw: true,
       });
-      const [results] = await sequelize.query(`select * from pov order by record_date desc limit $1 offset $2`, {
-        bind: [limit, offset],
-      });
+
+      // console.log('-------------------:', count);
+      const [results] = await sequelize.query(
+        `select * from pov where deleted_at is null order by record_date desc limit $1 offset $2`,
+        {
+          bind: [limit, offset],
+        },
+      );
+      // console.log('------------------->>>>>>>:', results);
 
       return Result.ok({
         data: results,
@@ -138,7 +144,7 @@ export class PostgresPovRepo implements IPovRepo {
     const model = this.models.Pov;
 
     try {
-      model.destroy(baseQuery);
+      await model.destroy(baseQuery);
       return Result.ok<void>();
     } catch (error) {
       return Result.fail(error);

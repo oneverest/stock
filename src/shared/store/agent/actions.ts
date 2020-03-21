@@ -1,4 +1,4 @@
-import { add as addPov, update as updatePov, getAllPovs } from 'services/pov';
+import { add as addPov, update as updatePov, getAllPovs, deletePov } from 'services/pov';
 
 export const ActionTypes = {
   SHOW_NOTIFICATION: 'agent/show_notification',
@@ -41,6 +41,17 @@ export const addPovRecord = (data: any) => {
   };
 };
 
+export const deletePovRecord = (id: string) => {
+  return async (dispatch: any) => {
+    const result = await deletePov(id);
+    if (result.isFailure) {
+      return dispatch(showNotification('error', String(result.errorValue())));
+    }
+
+    return dispatch(showNotification('success', '删除成功'));
+  };
+};
+
 export const updatePovRecord = (id: string, data: any) => {
   return async (dispatch: any) => {
     const result = await updatePov(id, data);
@@ -61,7 +72,7 @@ export const getAllPovsAction = (options: { start?: string; end?: string; page: 
 
     const data: any = result.getValue();
     const state = getState();
-    console.log('getAllPovsAction:', data, state);
+    // console.log('getAllPovsAction:', data, state);
 
     if (state.agent.pov_list.total !== Number(data.meta.count)) {
       return dispatch(fetchPovList(data.data, data.meta));

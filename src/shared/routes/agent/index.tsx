@@ -18,7 +18,7 @@ import xuan from './xuan.png';
 import logoMini from './logo.mini.png';
 import { useSelector } from 'react-redux';
 import './main.css';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, Switch, Redirect } from 'react-router-dom';
 import ListRoute from './routes/pov/list/';
 import { StatRoute } from './routes/pov/stat';
 import PovAdd from './routes/pov/PovAdd';
@@ -234,9 +234,12 @@ const Agent = (props: any) => {
                   {/* <SimpleChart width={400} height={400} /> */}
                   {/* <PovChart /> */}
                   {/* <IndexRoute /> */}
-                  <Route path="/agent/pov/list" component={ListRoute} exact />
-                  <Route path="/agent/pov/stat" component={StatRoute} exact />
-                  <Route path="/agent/pov/add" component={PovAdd} exact />
+                  <Switch>
+                    <Route path="/agent/pov/list" component={ListRoute} exact />
+                    <Route path="/agent/pov/stat" component={StatRoute} exact />
+                    <Route path="/agent/pov/add" component={PovAdd} exact />
+                    <Redirect to="/agent/pov/list" />
+                  </Switch>
                 </Segment>
               </Segment>
             </Sidebar.Pusher>
