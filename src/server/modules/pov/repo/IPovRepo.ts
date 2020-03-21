@@ -10,4 +10,5 @@ export interface IPovRepo {
   getRecordByDate(date: PovDate): Promise<Result<Pov | null>>;
   getRecordById(id: UniqueEntityID): Promise<Result<Pov | null>>;
   findAll(options: any): Promise<Result<any>>;
+  remove(id: UniqueEntityID): Promise<Result<void>>;
 }

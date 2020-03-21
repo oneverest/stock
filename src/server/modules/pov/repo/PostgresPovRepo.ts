@@ -105,6 +105,7 @@ export class PostgresPovRepo implements IPovRepo {
     baseQuery.where['record_date'] = date.value;
 
     const record = await this.models.Pov.findOne(baseQuery);
+    console.log(this.models.Pov.delete);
 
     if (!!record) {
       const domainInstance = PovMap.toDomain(record);
@@ -129,5 +130,18 @@ export class PostgresPovRepo implements IPovRepo {
     }
 
     return Result.ok(null);
+  }
+
+  async remove(id: UniqueEntityID): Promise<Result<void>> {
+    const baseQuery = this.createBaseQuery();
+    baseQuery.where['base_id'] = id.toString();
+    const model = this.models.Pov;
+
+    try {
+      model.destroy(baseQuery);
+      return Result.ok<void>();
+    } catch (error) {
+      return Result.fail(error);
+    }
   }
 }
