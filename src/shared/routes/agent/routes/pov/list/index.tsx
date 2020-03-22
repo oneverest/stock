@@ -1,17 +1,51 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { Grid, SegmentGroup, Segment, Header, Table, Button, Icon, Container } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getAllPovsAction, deletePovRecord } from 'store/agent/actions';
+import { deletePovRecord } from 'store/agent/actions';
 import { Pager } from 'components/Pager';
+import { getAllPovs } from 'services/pov';
 
-// const initialState = {page: 1, total: 0, pageSize: 20};
+const initialState = { page: 1, total: 0, offset: 0, items: [] };
+
+const reducer = (state: any, action: any) => {
+  switch (action.type) {
+    case 'page_changed':
+      return { ...state, page: action.page };
+    case 'send_request':
+      return { ...state, ...action.payload };
+    default:
+      throw new Error('未定义的 action');
+  }
+};
 
 function ListRoute(props: any) {
-  // const [page, setPage] = useState(1);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const pageSize = 20;
+
+  const { page, total, items, offset } = state;
+
   useEffect(() => {
-    // console.log(props);
-    props.dispatch(getAllPovsAction({ page: 1 }));
+    getAllPovs({ page, pageSize }).then(result => {
+      if (result.isSuccess) {
+        const { data, meta } = result.getValue() as any;
+        console.log(data, meta);
+        const newPage = Number(meta.offset) / Number(meta.limit) + 1;
+        const newTotal = Number(meta.count);
+        const newOffset = Number(meta.offset);
+
+        if (newOffset !== offset || newTotal !== total || newPage !== page)
+          dispatch({
+            type: 'send_request',
+            payload: {
+              page: Number(meta.offset) / Number(meta.limit) + 1,
+              total: Number(meta.count),
+              items: data,
+              offset: newOffset,
+            },
+          });
+      }
+    });
   });
   return (
     <React.Fragment>
@@ -25,7 +59,7 @@ function ListRoute(props: any) {
                   创建记录
                 </Button>
               </Segment>
-              {props.info.data.length ? (
+              {items.length ? (
                 <Segment>
                   <Table striped celled compact textAlign="center">
                     <Table.Header fullWidth>
@@ -39,7 +73,7 @@ function ListRoute(props: any) {
                       </Table.Row>
                     </Table.Header>
                     <Table.Body>
-                      {props.info.data.map((item: any, index: any) => (
+                      {items.map((item: any, index: any) => (
                         <Table.Row key={index}>
                           <Table.Cell>{item.base_id}</Table.Cell>
                           <Table.Cell>{item.record_date}</Table.Cell>
@@ -65,7 +99,11 @@ function ListRoute(props: any) {
                     <Table.Footer fullWidth>
                       <Table.Row>
                         <Table.HeaderCell colSpan="6">
-                          <Pager defaultActivePage={1} totalPages={5} />
+                          <Pager
+                            onHandlePageChange={page => dispatch({ type: 'page_changed', page })}
+                            defaultActivePage={page}
+                            totalPages={Math.ceil(total / pageSize)}
+                          />
                         </Table.HeaderCell>
                       </Table.Row>
                     </Table.Footer>

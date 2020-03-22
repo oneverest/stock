@@ -79,8 +79,7 @@ export class PostgresPovRepo implements IPovRepo {
     // }
 
     try {
-      const [count] = await sequelize.query(`select count(*) from pov where deleted_at is null limit $1 offset $2`, {
-        bind: [limit, offset],
+      const [count] = await sequelize.query(`select count(*) from pov where deleted_at is null`, {
         raw: true,
       });
 
