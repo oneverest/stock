@@ -8,6 +8,7 @@ interface Paths {
   appHtml: string;
   clientBuild: string;
   serverBuild: string;
+  cliBuild: string;
   srcClient: string;
   srcServer: string;
   srcShared: string;
@@ -23,6 +24,7 @@ const paths: Paths = {
   appHtml: resolvePath('config/webpack/template.html'),
   clientBuild: resolvePath('build/client'),
   serverBuild: resolvePath('build/server'),
+  cliBuild: resolvePath('build/cli'),
   srcClient: resolvePath('src/client'),
   srcServer: resolvePath('src/server'),
   srcShared: resolvePath('src/shared'),
