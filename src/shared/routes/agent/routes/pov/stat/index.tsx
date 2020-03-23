@@ -2,6 +2,7 @@ import React, { useEffect, useReducer } from 'react';
 // import PovChart from 'components/PovChart';
 import PovChart from 'components/PovChart2';
 import { getAllPovs } from 'services/pov';
+import { Button, Divider } from 'semantic-ui-react';
 
 const initialState = { net_worth: [], position_ratio: [], date: [] };
 
@@ -36,6 +37,13 @@ export function StatRoute() {
   });
   return (
     <React.Fragment>
+      <Button.Group basic size="mini">
+        <Button active>近一周</Button>
+        <Button>近一月</Button>
+        <Button>近三月</Button>
+        <Button>近一年</Button>
+      </Button.Group>
+      <Divider />
       <PovChart net_worth={net_worth} position_ratio={position_ratio} date={date} />
     </React.Fragment>
   );
