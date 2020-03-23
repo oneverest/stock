@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-02-21 11:52:24
+ * @LastEditTime: 2020-03-23 10:33:53
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /stock/src/server/core/logic/Result.ts
+ */
 export class Result<T> {
   public isSuccess: boolean;
   public isFailure: boolean;
@@ -84,7 +92,7 @@ export class Right<L, A> {
 }
 
 export const left = <L, A>(l: L): Either<L, A> => {
-  return new Left<L, A>(l);
+  return new Left(l);
 };
 
 export const right = <L, A>(a: A): Either<L, A> => {

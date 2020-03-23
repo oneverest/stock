@@ -22,6 +22,7 @@ import { Link, Route, Switch, Redirect } from 'react-router-dom';
 import ListRoute from './routes/pov/list/';
 import { StatRoute } from './routes/pov/stat';
 import PovAdd from './routes/pov/PovAdd';
+import PovUpdate from './routes/pov/PovUpdate';
 import Notification from './Notification';
 
 const getSidebarWidth = (isDefault: boolean): number => {
@@ -238,6 +239,7 @@ const Agent = (props: any) => {
                     <Route path="/agent/pov/list" component={ListRoute} exact />
                     <Route path="/agent/pov/stat" component={StatRoute} exact />
                     <Route path="/agent/pov/add" component={PovAdd} exact />
+                    <Route path="/agent/pov/:id" component={PovUpdate} exact />
                     <Redirect to="/agent/pov/list" />
                   </Switch>
                 </Segment>

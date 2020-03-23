@@ -64,8 +64,8 @@ function ListRoute(props: any) {
                   <Table striped celled compact textAlign="center">
                     <Table.Header fullWidth>
                       <Table.Row>
-                        <Table.HeaderCell>ID</Table.HeaderCell>
                         <Table.HeaderCell>日期</Table.HeaderCell>
+                        <Table.HeaderCell>ID</Table.HeaderCell>
                         <Table.HeaderCell>资产净值</Table.HeaderCell>
                         <Table.HeaderCell>持仓比例</Table.HeaderCell>
                         <Table.HeaderCell>上证指数</Table.HeaderCell>
@@ -75,8 +75,8 @@ function ListRoute(props: any) {
                     <Table.Body>
                       {items.map((item: any, index: any) => (
                         <Table.Row key={index}>
-                          <Table.Cell>{item.base_id}</Table.Cell>
                           <Table.Cell>{item.record_date}</Table.Cell>
+                          <Table.Cell>{item.base_id}</Table.Cell>
                           <Table.Cell>{item.net_worth}</Table.Cell>
                           <Table.Cell>{item.position_ratio}</Table.Cell>
                           <Table.Cell>{item.szzs}</Table.Cell>

@@ -32,6 +32,7 @@ export class PovMap extends Mapper {
 
   public static toDTO(record: Pov) {
     return {
+      id: record.id.toString(),
       net_worth: record.net_worth,
       position_ratio: record.position_ratio,
       record_date: record.record_date.value,
@@ -41,6 +42,7 @@ export class PovMap extends Mapper {
 
   public static mapPersistenceToDTO(raw: any) {
     return {
+      id: raw.base_id,
       net_worth: raw.net_worth,
       position_ratio: raw.position_ratio,
       record_date: raw.record_date,
