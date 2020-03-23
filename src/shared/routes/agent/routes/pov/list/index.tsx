@@ -81,7 +81,16 @@ function ListRoute(props: any) {
                           <Table.Cell>{item.position_ratio}</Table.Cell>
                           <Table.Cell>{item.szzs}</Table.Cell>
                           <Table.Cell>
-                            <Link to={`/agent/pov/${item.base_id}`} title="编辑">
+                            {/* <Link to={`/agent/pov/${item.base_id}`} title="编辑"> */}
+                            <Link
+                              to={{
+                                pathname: `/agent/pov/${item.base_id}`,
+                                state: {
+                                  ...item,
+                                },
+                              }}
+                              title="编辑"
+                            >
                               <Icon color="blue" name="edit" />
                             </Link>
                             <Link

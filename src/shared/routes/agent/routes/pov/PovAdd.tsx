@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Segment, Form, Header, Input, Divider, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { addPovRecord } from 'store/agent/actions';
@@ -28,9 +28,6 @@ function PovAdd(props: any) {
     );
   };
 
-  // useEffect(() => {
-  //   console.log(net_worth, position_ratio, szzs, record_date);
-  // });
   return (
     <React.Fragment>
       <Segment>

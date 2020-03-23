@@ -143,7 +143,7 @@ export class PostgresPovRepo implements IPovRepo {
     const model = this.models.Pov;
 
     try {
-      await model.destroy(baseQuery);
+      await model.destroy(baseQuery, { paranoid: false });
       return Result.ok<void>();
     } catch (error) {
       return Result.fail(error);

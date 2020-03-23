@@ -40,7 +40,7 @@ export default (sequelize: Sequelize): PovStatic => {
       underscored: true,
       timestamps: true,
       version: true,
-      paranoid: true,
+      paranoid: false, // 禁用软删除
       indexes: [{ unique: true, fields: ['record_date'] }],
     },
   ) as PovStatic;
