@@ -29,7 +29,7 @@ function ListRoute(props: any) {
     getAllPovs({ page, pageSize }).then(result => {
       if (result.isSuccess) {
         const { data, meta } = result.getValue() as any;
-        console.log(data, meta);
+        // console.log(data, meta);
         const newPage = Number(meta.offset) / Number(meta.limit) + 1;
         const newTotal = Number(meta.count);
         const newOffset = Number(meta.offset);

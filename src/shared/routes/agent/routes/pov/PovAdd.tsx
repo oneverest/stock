@@ -16,8 +16,6 @@ function PovAdd(props: any) {
   };
 
   const handleSubmit = (e: any, target: any) => {
-    console.log(net_worth, position_ratio, szzs, record_date);
-
     props.dispatch(
       addPovRecord({
         net_worth,

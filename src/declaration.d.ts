@@ -88,3 +88,11 @@ declare module 'express-manifest-helpers' {
 
   export function assetPath(source: string): string;
 }
+
+// declare module 'react-datepicker' {
+//   // import {ReactDatePickerProps as Props} from 'react-datepicker';
+
+//   interface ReactDatePickerProps {
+//     customTimeInput: any;
+//   }
+// }

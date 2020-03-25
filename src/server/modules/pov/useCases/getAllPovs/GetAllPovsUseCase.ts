@@ -18,6 +18,7 @@ export class GetAllPovsUseCase implements UseCase<GetAllPovsDTO, Response> {
     const offset = (page - 1) * limit;
 
     const resultOrError = await this.repo.findAll({
+      ...request,
       limit,
       offset,
     });

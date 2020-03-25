@@ -21,8 +21,7 @@ export default function PovChart2({
   const canvasRef = React.useRef();
 
   React.useEffect(() => {
-    console.log(canvasRef.current);
-    let chart: any = null;
+    let chart: Chart;
     if (canvasRef.current) {
       const ctx = (canvasRef.current as any).getContext('2d');
       if (ctx) {
@@ -66,6 +65,9 @@ export default function PovChart2({
         });
       }
     }
+    return () => {
+      if (chart) chart.destroy();
+    };
   });
 
   return (

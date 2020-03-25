@@ -65,32 +65,38 @@ export class PostgresPovRepo implements IPovRepo {
   async findAll(options: any): Promise<Result<any>> {
     const sequelize: Sequelize = this.models.sequelize;
 
-    // let condition = '';
     let limit = 20;
     let offset = 0;
     if (options.offset) offset = Number(options.offset);
     if (options.limit) limit = Number(options.limit);
 
-    // if (options.start || options.end) {
-    //   let condition = 'where';
-    //   if (options.start) {
-    //     condition += ` record_date >= '${String(options.start)}'`;
-    //   }
-    // }
+    const andConditions: string[] = ['deleted_at is null'];
+    if (options.start || options.end) {
+      if (options.start) {
+        andConditions.push(`record_date >= '${String(options.start)}'`);
+      }
+      if (options.end) {
+        andConditions.push(`record_date <= '${String(options.end)}'`);
+      }
+    }
 
     try {
-      const [count] = await sequelize.query(`select count(*) from pov where deleted_at is null`, {
+      const [count] = await sequelize.query(`select count(*) from pov where ${andConditions.join(' and ')}`, {
         raw: true,
       });
 
       // console.log('-------------------:', count);
-      const [results] = await sequelize.query(
-        `select * from pov where deleted_at is null order by record_date desc limit $1 offset $2`,
+      const [results, meta] = await sequelize.query(
+        `select * from pov where ${andConditions.join(' and ')} order by record_date desc limit $1 offset $2`,
         {
           bind: [limit, offset],
         },
       );
-      // console.log('------------------->>>>>>>:', results);
+      console.log(
+        '------------------->>>>>>>:',
+        `select * from pov where ${andConditions.join(' and ')} order by record_date desc limit $1 offset $2`,
+      );
+      // console.log('------------------->>>>>>>:', meta);
 
       return Result.ok({
         data: results,

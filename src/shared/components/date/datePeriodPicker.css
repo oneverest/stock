@@ -1,0 +1,20 @@
+#main_wrapper .date-period-picker__wrapper .react-datepicker-wrapper {
+  display: inline !important;
+}
+
+.date-period-picker__wrapper {
+  display: inline-flex;
+  margin-left: 20;
+}
+
+#main_wrapper .date-period-picker__wrapper .date-period-picker__submit_btn {
+  margin: 0 10;
+}
+
+#main_wrapper .date-period-picker__wrapper .date-period-picker__divider {
+  color: grey;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 10;
+  /* border: 1px solid red; */
+}
