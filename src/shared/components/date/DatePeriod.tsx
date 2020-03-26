@@ -135,7 +135,8 @@ export function DatePeriod({
         {custom_opt && (
           <Button
             as={Link}
-            to={{ pathname: `${location.pathname}`, state: { period_type: 'custom' }, search: '?z=s' }}
+            // to={{ pathname: `${location.pathname}`, state: { period_type: 'custom' }, search: '?z=s' }}
+            to={{ pathname: `${location.pathname}`, state: { period_type: 'custom' } }}
             active={period_type === 'custom'}
           >
             自定义

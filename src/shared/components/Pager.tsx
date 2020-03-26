@@ -9,8 +9,9 @@ interface Props {
 
 export function Pager(props: Props) {
   const handlePageChange = (e: SyntheticEvent, data: any) => {
-    console.log(data);
     props.onHandlePageChange(data.activePage);
   };
-  return <Pagination {...props} onPageChange={handlePageChange} />;
+  const p = Object.assign({}, props);
+  delete p.onHandlePageChange;
+  return <Pagination {...p} onPageChange={handlePageChange} />;
 }

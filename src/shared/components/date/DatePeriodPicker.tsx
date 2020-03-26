@@ -20,9 +20,20 @@ interface Props {
   onPick: (start: Date | null, end: Date | null) => void;
 }
 
-const CustomInput = ({ value, onClick }: { value?: any; onClick?: any }) => {
-  return <Input size="mini" value={value} onClick={onClick} />;
-};
+// const CustomInput = ({ value, onClick }: { value?: any; onClick?: any }) => {
+//   return <Input size="mini" value={value} onClick={onClick} />;
+// };
+
+class CustomInput extends React.Component<any> {
+  constructor(props: any) {
+    super(props);
+  }
+
+  render() {
+    const { value, onClick } = this.props;
+    return <Input size="mini" value={value} onClick={onClick} />;
+  }
+}
 
 const CustomTimeInput = ({ value, onChange }: { value?: any; onChange?: any }) => {
   return (

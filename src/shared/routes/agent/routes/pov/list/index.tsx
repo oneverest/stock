@@ -26,26 +26,33 @@ function ListRoute(props: any) {
   const { page, total, items, offset } = state;
 
   useEffect(() => {
-    getAllPovs({ page, pageSize }).then(result => {
-      if (result.isSuccess) {
-        const { data, meta } = result.getValue() as any;
-        // console.log(data, meta);
-        const newPage = Number(meta.offset) / Number(meta.limit) + 1;
-        const newTotal = Number(meta.count);
-        const newOffset = Number(meta.offset);
+    // let timer: NodeJS.Timeout;
+    const timer = setTimeout(() => {
+      getAllPovs({ page, pageSize }).then(result => {
+        if (result.isSuccess) {
+          const { data, meta } = result.getValue() as any;
+          // console.log(data, meta);
+          const newPage = Number(meta.offset) / Number(meta.limit) + 1;
+          const newTotal = Number(meta.count);
+          const newOffset = Number(meta.offset);
 
-        if (newOffset !== offset || newTotal !== total || newPage !== page)
-          dispatch({
-            type: 'send_request',
-            payload: {
-              page: Number(meta.offset) / Number(meta.limit) + 1,
-              total: Number(meta.count),
-              items: data,
-              offset: newOffset,
-            },
-          });
-      }
-    });
+          if (newOffset !== offset || newTotal !== total || newPage !== page)
+            dispatch({
+              type: 'send_request',
+              payload: {
+                page: Number(meta.offset) / Number(meta.limit) + 1,
+                total: Number(meta.count),
+                items: data,
+                offset: newOffset,
+              },
+            });
+        }
+      });
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+    };
   });
   return (
     <React.Fragment>
