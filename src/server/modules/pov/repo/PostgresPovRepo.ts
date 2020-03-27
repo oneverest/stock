@@ -87,15 +87,15 @@ export class PostgresPovRepo implements IPovRepo {
 
       // console.log('-------------------:', count);
       const [results, meta] = await sequelize.query(
-        `select * from pov where ${andConditions.join(' and ')} order by record_date desc limit $1 offset $2`,
+        `select * from pov where ${andConditions.join(' and ')} order by record_date asc limit $1 offset $2`,
         {
           bind: [limit, offset],
         },
       );
-      console.log(
-        '------------------->>>>>>>:',
-        `select * from pov where ${andConditions.join(' and ')} order by record_date desc limit $1 offset $2`,
-      );
+      // console.log(
+      //   '------------------->>>>>>>:',
+      //   `select * from pov where ${andConditions.join(' and ')} order by record_date desc limit $1 offset $2`,
+      // );
       // console.log('------------------->>>>>>>:', meta);
 
       return Result.ok({

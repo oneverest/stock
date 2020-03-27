@@ -67,19 +67,19 @@ export default function PovChart2({
                 radius: 0,
               },
             },
-            scales: {
-              xAxes: [
-                {
-                  type: 'time',
-                  time: {
-                    unit: 'day',
-                    displayFormats: {
-                      day: 'MM-DD',
-                    },
-                  },
-                },
-              ],
-            },
+            // scales: {
+            //   xAxes: [
+            //     {
+            //       type: 'time',
+            //       time: {
+            //         unit: 'day',
+            //         displayFormats: {
+            //           day: 'MM-DD',
+            //         },
+            //       },
+            //     },
+            //   ],
+            // },
           },
         });
       }
