@@ -30,6 +30,24 @@ const initialState: IState = {
 
 const formatDate = (d: number | Date) => format(d, 'yyyy-MM-dd');
 
+const constructSearch = (type: PeriodType) => {
+  const dateOfToday = new Date();
+  switch (type) {
+    case 'today':
+      return `?start=${format(new Date(), 'yyyy-MM-dd')}`;
+    case 'yesterday':
+      return `?start=${formatDate(subDays(dateOfToday, 1))}&end=${formatDate(subDays(dateOfToday, 1))}`;
+    case 'week':
+      return `?start=${formatDate(subDays(dateOfToday, 6))}`;
+    case 'month':
+      return `?start=${formatDate(subDays(dateOfToday, 29))}`;
+    case 'year':
+      return `?start=${formatDate(subDays(dateOfToday, 359))}`;
+    default:
+      throw new Error();
+  }
+};
+
 export function DatePeriod({
   today_opt = true,
   yesterday_opt = true,
@@ -41,11 +59,30 @@ export function DatePeriod({
   history,
 }: Props) {
   // console.log('DatePeriod:', location);
-  let period_type: PeriodType = 'today';
+  let period_type: PeriodType = today_opt
+    ? 'today'
+    : yesterday_opt
+    ? 'yesterday'
+    : week_opt
+    ? 'week'
+    : month_opt
+    ? 'month'
+    : 'year';
+
+  if (period_type === 'year' && !year_opt) {
+    throw new Error('DatePeriod component argument error');
+  }
   if (location.state && location.state.period_type) {
     period_type = location.state.period_type;
   }
   initialState.period_type = period_type;
+  if (location.state === undefined) {
+    history.push({
+      pathname: `${location.pathname}`,
+      state: { period_type },
+      search: constructSearch(period_type),
+    });
+  }
 
   const handlePick = (start: Date | null, end: Date | null) => {
     const search = {} as any;
@@ -63,7 +100,6 @@ export function DatePeriod({
         });
   };
 
-  const dateOfToday = new Date();
   return (
     <React.Fragment>
       <Button.Group basic size="mini">
@@ -73,7 +109,7 @@ export function DatePeriod({
             to={{
               pathname: `${location.pathname}`,
               state: { period_type: 'today' },
-              search: `?start=${format(new Date(), 'yyyy-MM-dd')}`,
+              search: constructSearch('today'),
             }}
             active={period_type === 'today'}
           >
@@ -86,7 +122,7 @@ export function DatePeriod({
             to={{
               pathname: `${location.pathname}`,
               state: { period_type: 'yesterday' },
-              search: `?start=${formatDate(subDays(dateOfToday, 1))}&end=${formatDate(subDays(dateOfToday, 1))}`,
+              search: constructSearch('yesterday'),
             }}
             active={period_type === 'yesterday'}
           >
@@ -99,7 +135,7 @@ export function DatePeriod({
             to={{
               pathname: `${location.pathname}`,
               state: { period_type: 'week' },
-              search: `?start=${formatDate(subDays(dateOfToday, 6))}`,
+              search: constructSearch('week'),
             }}
             active={period_type === 'week'}
           >
@@ -112,7 +148,7 @@ export function DatePeriod({
             to={{
               pathname: `${location.pathname}`,
               state: { period_type: 'month' },
-              search: `?start=${formatDate(subDays(dateOfToday, 29))}`,
+              search: constructSearch('month'),
             }}
             active={period_type === 'month'}
           >
@@ -125,7 +161,7 @@ export function DatePeriod({
             to={{
               pathname: `${location.pathname}`,
               state: { period_type: 'year' },
-              search: `?start=${formatDate(subDays(dateOfToday, 359))}`,
+              search: constructSearch('year'),
             }}
             active={period_type === 'year'}
           >

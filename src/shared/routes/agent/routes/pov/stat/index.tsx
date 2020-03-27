@@ -58,7 +58,7 @@ export function StatRoute(props: any) {
       <DatePeriod
         // year_opt={false}
         // month_opt={false}
-        // today_opt={false}
+        today_opt={false}
         yesterday_opt={false}
         history={props.history}
         match={props.match}
