@@ -1,6 +1,7 @@
 import program from 'commander';
 import { createPovUseCase } from 'modules/pov/useCases/createPov';
 import { CreatePovDTO } from 'modules/pov/useCases/createPov/createPovDTO';
+import { RequestOptions, get } from 'http';
 
 require('dotenv').config();
 
@@ -268,11 +269,35 @@ async function run(arg: string, arg2: any) {
   }
   return;
 }
+
+async function szzs() {
+  await new Promise((resolve, reject) => {
+    const options: RequestOptions = {
+      host: 'web.ifzq.gtimg.cn',
+      path: '/appstock/app/fqkline/get?param=sh000001,day,2019-03-22,,640,qfq',
+      method: 'GET',
+    };
+    get(options, res => {
+      let msg = '';
+      res.on('data', chunk => (msg += chunk));
+      res.on('end', () => {
+        console.log(JSON.parse(msg));
+        resolve(msg);
+      });
+    }).on('error', err => {
+      console.log('Error:', err.message);
+      reject(err);
+    });
+  });
+}
+
 async function main() {
   program
     .version('0.1.0')
     .command('import <file>')
     .action(run);
+
+  program.command('szzs').action(szzs);
 
   await program.parseAsync(process.argv);
 }

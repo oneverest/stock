@@ -10,7 +10,7 @@ const webPackConfig = getConfig(process.env.NODE_ENV || 'development');
 const build = async () => {
   rimraf.sync(paths.cliBuild);
 
-  const [cliConfig] = webPackConfig[2];
+  const cliConfig = webPackConfig[2];
   const webpackCompiler = webpack([cliConfig]);
 
   const name = 'cli';
