@@ -1,0 +1,65 @@
+version: "2"
+
+services:
+
+  db:
+    build: ./microservices/base/postgresql
+    logging:
+      driver: "json-file"
+      options:
+        max-file: 5
+        max-size: 10m
+    ports:
+      - 5432:5432
+    volumes:
+      - ./microservices/base/postgresql/pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    networks:
+      app_net:
+        ipv4_address: 172.16.177.100
+
+  # memcached:
+  #   image: memcached:latest
+  #   ports:
+  #     - 11211:11211
+  #   networks:
+  #     app_net:
+  #       ipv4_address: 172.16.177.101
+
+  redis:
+    image: redis:3.2.1
+    logging:
+      driver: "json-file"
+      options:
+        max-file: 5
+        max-size: 10m
+    ports:
+      - 6379:6379
+    networks:
+      app_net:
+        ipv4_address: 172.16.177.102
+
+  # rabbitmq:
+  #   build: ./microservices/base/messaging
+  #  restart: always
+  #   hostname: test-rabbit
+  #   volumes:
+  #     - ./data/messaging:/var/lib/rabbitmq/mnesia/rabbit@test-rabbit
+  #   ports:
+  #     - 5672:5672
+  #     - 8902:15672
+  #   networks:
+  #     app_net:
+  #       ipv4_address: 172.16.177.103
+
+networks:
+  app_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.177.0/24
+          gateway: 172.16.177.1

@@ -144,3 +144,6 @@ dist
 build/*
 .vscode
 **/migrations/*.js
+
+docker/data
+pgdata
