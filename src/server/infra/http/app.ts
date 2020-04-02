@@ -32,7 +32,7 @@ const router = promiseRouter();
 require('dotenv').config();
 const PORT = process.env.PORT || 3800;
 const origin = {
-  origin: isProduction ? 'https://whitelabel.com' : '*',
+  origin: isProduction ? 'https://winstock.com.cn' : '*',
 };
 if (process.env.NODE_ENV === 'development') {
   app.use(paths.publicPath, express.static(path.join(paths.clientBuild, paths.publicPath)));
