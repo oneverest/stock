@@ -7,9 +7,16 @@ const {
   USER_MOD_DB_PORT,
   USER_MOD_DB_DEV_DB_NAME,
   USER_MOD_DB_TEST_DB_NAME,
+  USER_MOD_DB_PROD_DB_NAME,
   NODE_ENV,
 } = process.env;
-const dbName = NODE_ENV === 'development' ? USER_MOD_DB_DEV_DB_NAME : USER_MOD_DB_TEST_DB_NAME;
+
+const dbName =
+  NODE_ENV === 'development'
+    ? USER_MOD_DB_DEV_DB_NAME
+    : NODE_ENV === 'production'
+    ? USER_MOD_DB_PROD_DB_NAME
+    : USER_MOD_DB_TEST_DB_NAME;
 
 /**
  * postgresql 在 linux 下，未设置默认密码，脚本会提示认证错误，需以 postgres 登录到 psql，运行下面命令
