@@ -14,7 +14,7 @@ services:
     volumes:
       - ./microservices/base/postgresql/pgdata:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: 123456
+      POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
     networks:
