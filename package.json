@@ -14,6 +14,7 @@
     "build": "cross-env NODE_ENV=production TS_NODE_PROJECT=tsconfig.tooling.json ts-node scripts/build",
     "build:client": "cross-env NODE_ENV=production TS_NODE_PROJECT=tsconfig.tooling.json ts-node scripts/build --client-only",
     "build:cli": "cross-env NODE_ENV=development TS_NODE_PROJECT=tsconfig.tooling.json ts-node scripts/build-cli",
+    "build:cli:prod": "cross-env NODE_ENV=production TS_NODE_PROJECT=tsconfig.tooling.json ts-node scripts/build-cli",
     "start": "cross-env NODE_ENV=development TS_NODE_PROJECT=tsconfig.tooling.json ts-node scripts/start",
     "start:client": "cross-env NODE_ENV=development TS_NODE_PROJECT=tsconfig.tooling.json ts-node scripts/start --client-only",
     "cli": "cross-env NODE_ENV=development TS_NODE_PROJECT=tsconfig.tooling.json ts-node scripts/cli",
